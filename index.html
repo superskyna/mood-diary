@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="오늘의 감정과 있었던 일을 내 브라우저에 차분히 기록하는 감정일기"
+    />
+    <title>홈 | 감정일기</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script type="module" src="js/common-ui.js"></script>
+    <script type="module" src="js/home.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="감정일기 홈">
+          <span class="brand-mark" aria-hidden="true">☁️</span>
+          <span>감정일기</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="main-nav" aria-label="주요 메뉴">
+            <a class="nav-link is-active" href="index.html" aria-current="page">홈</a>
+            <a class="nav-link" href="analysis.html">분석</a>
+          </nav>
+
+          <details class="data-menu">
+            <summary>데이터</summary>
+            <div class="data-menu-panel">
+              <a id="backup-button" href="#">백업하기</a>
+              <button id="restore-button" type="button">복구하기</button>
+              <p>기록을 파일로 보관하거나 이전 백업으로 되돌릴 수 있어요.</p>
+            </div>
+          </details>
+          <input
+            id="restore-file"
+            class="visually-hidden"
+            type="file"
+            accept="application/json,.json"
+            aria-label="백업 파일 선택"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="page-intro" aria-labelledby="home-title">
+        <p class="eyebrow">오늘을 천천히 돌아보는 시간</p>
+        <h1 id="home-title">오늘의 마음을 남겨보세요</h1>
+        <p>기록은 이 브라우저 안에만 안전하게 보관돼요.</p>
+      </section>
+
+      <div class="home-layout">
+        <section class="panel calendar-panel" aria-labelledby="calendar-title">
+          <div class="calendar-toolbar">
+            <button id="calendar-previous" class="icon-button" type="button" aria-label="이전 달">‹</button>
+            <h2 id="calendar-title" aria-live="polite"></h2>
+            <button id="calendar-next" class="icon-button" type="button" aria-label="다음 달">›</button>
+          </div>
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+          </div>
+          <div id="calendar-grid" class="calendar-grid" role="grid" aria-labelledby="calendar-title"></div>
+          <div class="calendar-legend" aria-label="달력 표시 안내">
+            <span><i class="legend-today" aria-hidden="true"></i>오늘</span>
+            <span><i class="legend-entry" aria-hidden="true"></i>기록한 날</span>
+          </div>
+        </section>
+
+        <section class="panel entry-panel" aria-labelledby="entry-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">감정 기록</p>
+              <h2 id="entry-title" aria-live="polite"></h2>
+            </div>
+            <span id="entry-status" class="status-chip">새 기록</span>
+          </div>
+
+          <form id="entry-form" class="entry-form" novalidate>
+            <fieldset class="emotion-fieldset">
+              <legend>오늘의 대표 감정</legend>
+              <div id="emotion-options" class="emotion-options"></div>
+              <p id="emotion-error" class="field-error" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="content-field">
+              <label for="entry-content">오늘 있었던 일</label>
+              <textarea
+                id="entry-content"
+                name="content"
+                rows="8"
+                maxlength="1000"
+                placeholder="오늘 마음에 남은 일을 편하게 적어보세요."
+                aria-describedby="content-count content-error"
+              ></textarea>
+              <div class="field-meta">
+                <p id="content-error" class="field-error" aria-live="polite"></p>
+                <output id="content-count" for="entry-content">0 / 1,000</output>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="save-entry" class="button button-primary" type="submit">저장하기</button>
+              <button id="delete-entry" class="button button-danger" type="button" hidden>삭제하기</button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <aside class="privacy-note" aria-label="데이터 보관 안내">
+        <span aria-hidden="true">🔒</span>
+        <p>
+          감정일기는 로그인 없이 사용하며, 작성한 내용은 외부 서버로 보내지 않습니다.
+        </p>
+      </aside>
+    </main>
+  </body>
+</html>

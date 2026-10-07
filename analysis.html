@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="한 달 동안 기록한 감정의 흐름과 관련 일기를 돌아보는 감정일기 분석"
+    />
+    <title>분석 | 감정일기</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script type="module" src="js/common-ui.js"></script>
+    <script type="module" src="js/analysis.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="감정일기 홈">
+          <span class="brand-mark" aria-hidden="true">☁️</span>
+          <span>감정일기</span>
+        </a>
+
+        <nav class="main-nav" aria-label="주요 메뉴">
+          <a class="nav-link" href="index.html">홈</a>
+          <a class="nav-link is-active" href="analysis.html" aria-current="page">분석</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="page-intro" aria-labelledby="analysis-title">
+        <p class="eyebrow">마음의 흐름 돌아보기</p>
+        <h1 id="analysis-title">한 달의 감정을 모아봐요</h1>
+        <p>감정별 기록 횟수와 그날의 이야기를 한눈에 확인할 수 있어요.</p>
+      </section>
+
+      <section class="panel analysis-panel" aria-labelledby="monthly-title">
+        <div class="analysis-toolbar">
+          <button id="analysis-previous" class="icon-button" type="button" aria-label="이전 달">‹</button>
+          <div>
+            <p class="section-kicker">월간 분석</p>
+            <h2 id="monthly-title" aria-live="polite"></h2>
+          </div>
+          <button id="analysis-next" class="icon-button" type="button" aria-label="다음 달">›</button>
+        </div>
+        <div id="emotion-stats" class="emotion-stats" aria-label="감정별 기록 횟수"></div>
+
+        <section class="records-section" aria-labelledby="record-list-title">
+          <h2 id="record-list-title" aria-live="polite">기록을 선택해 주세요</h2>
+          <div id="record-list"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
